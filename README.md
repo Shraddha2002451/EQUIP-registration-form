@@ -1,1 +1,0 @@
-# EQUIP-registration-form
