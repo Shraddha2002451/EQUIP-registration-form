@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .main {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .box {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-buttons a {
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: white;
+            font-size: 16px;
+            display: inline-block;
+        }
+        .social-buttons .google { background-color: #db4437; }
+        .social-buttons .facebook { background-color: #3b5998; }
+        .social-buttons .apple { background-color: #000000; }
+        .social-buttons a:hover {
+            opacity: 0.8;
+        }
+        .login-register-text {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-register-text a {
+            text-decoration: none;
+            color: #4CAF50;
+        }
+        .login-register-text a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // Validate phone number before form submission
+        function validateForm() {
+            const phone = document.getElementById('phno').value;
+            const password = document.getElementById('password').value;
+            
+            // Validate phone number (must be 10 digits)
+            const phoneRegex = /^\d{10}$/;
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a valid 10-digit phone number.");
+                return false;
+            }
+
+            return true; // Form is valid
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 main">
+                <form action="/register" method="POST" onsubmit="return validateForm()">
+                    <h2>Registration Form</h2>
+                    <input type="text" class="box" id="firstname" name="firstname" placeholder="Firstname" required autocomplete="off"/>
+                    <input type="text" class="box" id="lastname" name="lastname" placeholder="Lastname" required autocomplete="off"/>
+                    <input type="text" class="box" id="phno" name="phno" placeholder="Mobile" required autocomplete="off"/>
+                    <input type="password" class="box" id="password" name="password" placeholder="Password" required autocomplete="off"/>
+                    <input type="submit" value="Register" />
+                </form>
+
+                <div class="social-buttons">
+                    <a href="#" class="google">Sign up with Google</a>
+                    <a href="#" class="facebook">Sign up with Facebook</a>
+                    <a href="#" class="apple">Sign up with Apple</a>
+                </div>
+
+                <div class="login-register-text">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

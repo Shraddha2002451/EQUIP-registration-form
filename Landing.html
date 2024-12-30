@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .main {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            text-align: center;
+            color: #555;
+        }
+        .logout-button {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .logout-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 main">
+                <h2 id="greeting"></h2>
+                <p id="currentTime"></p>
+                <a href="login.html" class="logout-button">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCurrentTime() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            return {
+                hours,
+                minutes,
+                formatted: now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+            };
+        }
+
+        function getGreeting(hours) {
+            if (hours < 12) {
+                return "Good morning";
+            } else if (hours < 18) {
+                return "Good afternoon";
+            } else {
+                return "Good evening";
+            }
+        }
+
+        window.onload = function () {
+            const currentTime = getCurrentTime();
+            const greeting = getGreeting(currentTime.hours);
+
+            document.getElementById("greeting").innerText = `${greeting}, welcome!`;
+            document.getElementById("currentTime").innerText = `Current time: ${currentTime.formatted}`;
+        }
+    </script>
+</body>
+</html>
